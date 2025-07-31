@@ -1,21 +1,10 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { ArrowRight } from "lucide-react"
 import Image from "next/image"
 
 export function LeadMagnetSection() {
-  const handleGuideSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    const formData = new FormData(event.currentTarget)
-    const data = Object.fromEntries(formData.entries())
-    console.log("Lead magnet form submitted:", data)
-    // Aqui você pode adicionar a lógica para enviar o lead e liberar o download do guia
-    alert(
-      "Obrigado! Em breve você receberá o guia no seu e-mail. (Verifique o console para ver os dados)"
-    )
-  }
 
   return (
     <section className="py-20 bg-gray-50">
@@ -39,28 +28,15 @@ export function LeadMagnetSection() {
               Guia Prático para PMEs" e descubra como calcular o retorno do
               investimento em automação.
             </p>
-            <form onSubmit={handleGuideSubmit} className="space-y-4">
-              <Input
-                name="name"
-                placeholder="Seu nome completo"
-                className="h-12"
-                required
-              />
-              <Input
-                name="email"
-                type="email"
-                placeholder="Seu melhor email"
-                className="h-12"
-                required
-              />
+            <a href="/ebook" className="w-full">
               <Button
-                type="submit"
+                type="button"
                 className="w-full h-12 bg-accent hover:bg-accent/90 text-white text-lg"
               >
-                Baixar Guia Agora
+                Baixar E-book Agora
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
-            </form>
+            </a>
           </div>
         </div>
       </div>
