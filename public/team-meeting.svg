@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400" fill="none">
+  <!-- Background -->
+  <rect width="600" height="400" rx="8" fill="#f8f9fa"/>
+  
+  <!-- Conference table -->
+  <rect x="100" y="250" width="400" height="80" rx="5" fill="#4a6baf" opacity="0.9"/>
+  <rect x="120" y="250" width="360" height="10" rx="2" fill="#3a5795"/>
+  
+  <!-- People around table -->
+  <!-- Person 1 (left side) -->
+  <circle cx="150" cy="200" r="30" fill="#ffd1dc"/>
+  <rect x="135" y="240" width="30" height="60" rx="5" fill="#2c3e50"/>
+  
+  <!-- Person 2 (left side) -->
+  <circle cx="220" cy="200" r="30" fill="#d1e8ff"/>
+  <rect x="205" y="240" width="30" height="60" rx="5" fill="#34495e"/>
+  
+  <!-- Person 3 (right side) -->
+  <circle cx="380" cy="200" r="30" fill="#d1e8ff"/>
+  <rect x="365" y="240" width="30" height="60" rx="5" fill="#2c3e50"/>
+  
+  <!-- Person 4 (right side) -->
+  <circle cx="450" cy="200" r="30" fill="#ffd1dc"/>
+  <rect x="435" y="240" width="30" height="60" rx="5" fill="#34495e"/>
+  
+  <!-- Person 5 (bottom, back to camera) -->
+  <circle cx="300" cy="320" r="30" fill="#d1e8ff"/>
+  <rect x="285" y="320" width="30" height="60" rx="5" fill="#2c3e50"/>
+  
+  <!-- Digital screen/presentation -->
+  <rect x="200" y="80" width="200" height="120" rx="5" fill="#ffffff" stroke="#cccccc" stroke-width="2"/>
+  <rect x="210" y="90" width="180" height="90" rx="2" fill="#4a6baf" opacity="0.7"/>
+  
+  <!-- Charts/graphs on screen -->
+  <rect x="220" y="100" width="70" height="70" rx="2" fill="#ffffff" opacity="0.9"/>
+  <rect x="310" y="100" width="70" height="30" rx="2" fill="#ffffff" opacity="0.9"/>
+  <rect x="310" y="140" width="70" height="30" rx="2" fill="#ffffff" opacity="0.9"/>
+  
+  <!-- Bar chart -->
+  <rect x="230" y="150" width="10" height="20" fill="#3a5795"/>
+  <rect x="245" y="140" width="10" height="30" fill="#3a5795"/>
+  <rect x="260" y="130" width="10" height="40" fill="#3a5795"/>
+  <rect x="275" y="110" width="10" height="60" fill="#3a5795"/>
+  
+  <!-- Company logo -->
+  <circle cx="300" y="40" r="20" fill="#4a6baf"/>
+  <text x="300" y="45" font-family="Arial" font-size="12" fill="white" text-anchor="middle">PluginCo</text>
+</svg>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" fill="none">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="100" fill="#f0f4f8"/>
+  
+  <!-- Head -->
+  <circle cx="100" cy="85" r="50" fill="#e2c196"/>
+  
+  <!-- Hair -->
+  <path d="M60 60 Q100 20 140 60 Q130 100 100 100 Q70 100 60 60 Z" fill="#3d3d3d"/>
+  
+  <!-- Eyes -->
+  <ellipse cx="80" cy="75" rx="5" ry="3" fill="#3d3d3d"/>
+  <ellipse cx="120" cy="75" rx="5" ry="3" fill="#3d3d3d"/>
+  
+  <!-- Eyebrows -->
+  <path d="M75 68 Q80 65 85 68" stroke="#3d3d3d" stroke-width="2" stroke-linecap="round"/>
+  <path d="M115 68 Q120 65 125 68" stroke="#3d3d3d" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Nose -->
+  <path d="M100 80 L103 90 Q100 95 97 90 Z" fill="#d9b38c"/>
+  
+  <!-- Mouth -->
+  <path d="M85 100 Q100 110 115 100" stroke="#8e5a5a" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Glasses -->
+  <rect x="70" y="72" width="20" height="10" rx="3" stroke="#5a5a5a" stroke-width="1.5" fill="transparent"/>
+  <rect x="110" y="72" width="20" height="10" rx="3" stroke="#5a5a5a" stroke-width="1.5" fill="transparent"/>
+  <line x1="90" y1="77" x2="110" y2="77" stroke="#5a5a5a" stroke-width="1.5"/>
+  
+  <!-- Professional attire -->
+  <path d="M60 135 L60 200 L140 200 L140 135 Z" fill="#4a6baf"/>
+  
+  <!-- Shirt/blouse -->
+  <path d="M85 135 L85 180 L115 180 L115 135 Z" fill="#ffffff"/>
+  
+  <!-- Necklace -->
+  <path d="M95 135 Q100 145 105 135" stroke="#d4af37" stroke-width="2"/>
+  <circle cx="100" cy="145" r="3" fill="#d4af37"/>
+  
+  <!-- Tech elements -->
+  <rect x="70" y="155" width="60" height="10" rx="2" fill="#e6e6e6"/>
+  <circle cx="75" cy="160" r="2" fill="#4CAF50"/>
+  <circle cx="85" cy="160" r="2" fill="#F44336"/>
+  <circle cx="95" cy="160" r="2" fill="#2196F3"/>
+  
+  <!-- Hair details -->
+  <path d="M70 55 Q80 40 90 55" stroke="#3d3d3d" stroke-width="2" fill="transparent"/>
+  <path d="M110 55 Q120 40 130 55" stroke="#3d3d3d" stroke-width="2" fill="transparent"/>
+</svg>
