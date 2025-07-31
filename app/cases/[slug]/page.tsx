@@ -1,4 +1,6 @@
 import { Button } from "@/components/ui/button"
+"use client";
+
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Brain, ArrowRight, Quote, CheckCircle, TrendingUp, Clock, Users } from "lucide-react"
@@ -84,7 +86,19 @@ export default async function CaseDetailPage({ params }: PageProps) {
               </Link>
             </nav>
             <a href="https://wa.me/5521971872236" target="_blank" rel="noopener noreferrer">
-                  <Button className="bg-accent hover:bg-accent/90 text-white">Agende seu Diagnóstico</Button>
+                  <Button
+                    className="bg-accent hover:bg-accent/90 text-white"
+                    onClick={() =>
+                      window.open(
+                        `https://wa.me/5521971872236?text=${encodeURIComponent(
+                          "Olá! Gostaria de agendar um diagnóstico estratégico para minha empresa, vi o case de sucesso da ModaStyle no site da PluginCo."
+                        )}`,
+                        "_blank"
+                      )
+                    }
+                  >
+                    Agende seu Diagnóstico
+                  </Button>
                 </a>
           </div>
         </div>
@@ -178,7 +192,7 @@ export default async function CaseDetailPage({ params }: PageProps) {
               <h2 className="text-3xl font-bold text-primary mb-6">O Desafio</h2>
               <p className="text-lg text-gray-600 leading-relaxed mb-6">{caseData.detailedChallenge}</p>
               <Image
-                src="/placeholder.svg?height=400&width=800"
+                src="/case-study-ecommerce.svg"
                 alt="Situação antes da implementação"
                 width={800}
                 height={400}
@@ -238,7 +252,7 @@ export default async function CaseDetailPage({ params }: PageProps) {
               </div>
 
               <Image
-                src="/placeholder.svg?height=400&width=800"
+                src="/case-study-ecommerce.svg"
                 alt="Fluxo da solução implementada"
                 width={800}
                 height={400}
@@ -304,7 +318,7 @@ export default async function CaseDetailPage({ params }: PageProps) {
                   </blockquote>
                   <div className="flex items-center space-x-4">
                     <Image
-                      src="/placeholder.svg?height=60&width=60"
+                      src="/ceo-profile.svg"
                       alt={caseData.testimonial.author}
                       width={60}
                       height={60}
@@ -330,7 +344,18 @@ export default async function CaseDetailPage({ params }: PageProps) {
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
             Agende uma conversa gratuita e descubra como podemos transformar sua operação.
           </p>
-          <Button size="lg" className="bg-white text-primary hover:bg-gray-100 px-8 py-4 text-lg">
+          <Button
+            size="lg"
+            className="bg-white text-primary hover:bg-gray-100 px-8 py-4 text-lg"
+            onClick={() =>
+              window.open(
+                `https://wa.me/5521971872236?text=${encodeURIComponent(
+                  "Olá! Gostaria de agendar um diagnóstico estratégico para minha empresa, vi o case de sucesso da ModaStyle no site da PluginCo."
+                )}`,
+                "_blank"
+              )
+            }
+          >
             Agende seu Diagnóstico
             <ArrowRight className="ml-2 w-5 h-5" />
           </Button>

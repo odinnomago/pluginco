@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Brain, Target, Users, Lightbulb, ArrowRight, CheckCircle, Award, TrendingUp } from "lucide-react"
@@ -338,12 +340,20 @@ export default function SobrePage() {
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
             Agende uma conversa gratuita e veja como podemos transformar sua empresa.
           </p>
-          <a href="https://wa.me/5521971872236" target="_blank" rel="noopener noreferrer">
-            <Button size="lg" className="bg-white text-primary hover:bg-gray-100 px-8 py-4 text-lg">
-              Agende seu Diagnóstico Estratégico
-              <ArrowRight className="ml-2 w-5 h-5" />
+            <Button
+              size="lg"
+              className="bg-white text-primary hover:bg-gray-100 px-8 py-4 text-lg"
+              onClick={() =>
+                window.open(
+                  `https://wa.me/+5521971872236?text=${encodeURIComponent(
+                    'Olá! Gostaria de falar com um especialista.'
+                  )}`,
+                  '_blank'
+                )
+              }
+            >
+              Fale com um especialista
             </Button>
-          </a>
         </div>
       </section>
 

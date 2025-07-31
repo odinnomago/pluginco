@@ -1,14 +1,24 @@
+"use client";
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Brain, Mail, Phone, MapPin, Clock, ArrowRight, MessageSquare } from "lucide-react"
 import Link from "next/link"
+import { WHATSAPP_NUMBER } from "@/lib/constants"
 
 export default function ContatoPage() {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const formData = new FormData(event.currentTarget)
+    const data = Object.fromEntries(formData.entries())
+    console.log("Form data submitted:", data)
+    // Aqui você pode adicionar a lógica para enviar os dados para um backend
+    alert("Mensagem enviada com sucesso! (Verifique o console para ver os dados)")
+  }
+
   return (
     <div className="min-h-screen bg-white">
-
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-primary/5 to-accent/5">
         <div className="container mx-auto px-4">
@@ -38,42 +48,32 @@ export default function ContatoPage() {
                   </p>
                 </CardHeader>
                 <CardContent className="px-0 pb-0">
-                  <form className="space-y-6">
+                  <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">Nome Completo *</label>
-                        <Input placeholder="Seu nome completo" className="h-12" />
+                        <Input name="name" placeholder="Seu nome completo" className="h-12" required />
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
-                        <Input type="email" placeholder="seu@email.com" className="h-12" />
+                        <Input name="email" type="email" placeholder="seu@email.com" className="h-12" required />
                       </div>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">Telefone *</label>
-                        <Input placeholder="(11) 99999-9999" className="h-12" />
+                        <Input name="phone" placeholder="(11) 99999-9999" className="h-12" required />
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">Empresa</label>
-                        <Input placeholder="Nome da sua empresa" className="h-12" />
+                        <Input name="company" placeholder="Nome da sua empresa" className="h-12" />
                       </div>
                     </div>
 
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">Cargo/Função</label>
-                      <Input placeholder="Seu cargo na empresa" className="h-12" />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Qual seu maior desafio hoje?
-                      </label>
-                      <Textarea
-                        placeholder="Descreva brevemente o principal desafio ou gargalo que sua empresa enfrenta..."
-                        className="min-h-[100px]"
-                      />
+                      <Input name="role" placeholder="Seu cargo na empresa" className="h-12" />
                     </div>
 
                     <div>
@@ -81,6 +81,7 @@ export default function ContatoPage() {
                         Qual o principal desafio da sua empresa?
                       </label>
                       <Textarea
+                        name="company_challenge"
                         placeholder="Descreva brevemente os principais gargalos ou desafios que sua empresa enfrenta..."
                         className="min-h-[120px]"
                       />
@@ -90,7 +91,10 @@ export default function ContatoPage() {
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         Qual serviço tem mais interesse?
                       </label>
-                      <select className="w-full h-12 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent">
+                      <select
+                        name="service_interest"
+                        className="flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+                      >
                         <option value="">Selecione uma opção</option>
                         <option value="ia-conversacional">IA Conversacional (Chatbots)</option>
                         <option value="automacao">Automação Inteligente de Processos</option>
@@ -100,12 +104,13 @@ export default function ContatoPage() {
                       </select>
                     </div>
 
-                    <a href="https://wa.me/5521971872236" target="_blank" rel="noopener noreferrer">
-                      <Button className="w-full h-12 bg-accent hover:bg-accent/90 text-white text-lg">
-                        Enviar Mensagem
-                        <ArrowRight className="ml-2 w-5 h-5" />
-                      </Button>
-                    </a>
+                    <Button
+                      type="submit"
+                      className="w-full h-12 bg-accent hover:bg-accent/90 text-white text-lg"
+                    >
+                      Enviar Mensagem
+                      <ArrowRight className="ml-2 w-5 h-5" />
+                    </Button>
 
                     <p className="text-sm text-gray-500 text-center">
                       Ao enviar este formulário, você concorda em receber comunicações da PluginCo.
@@ -149,7 +154,14 @@ export default function ContatoPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-primary mb-1">WhatsApp</h3>
-                      <p className="text-gray-600">(11) 9999-9999</p>
+                      <a
+                        href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-600 hover:text-accent"
+                      >
+                        (11) 9999-9999
+                      </a>
                       <p className="text-sm text-gray-500">Atendimento rápido via WhatsApp</p>
                     </div>
                   </div>
@@ -244,83 +256,7 @@ export default function ContatoPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-primary text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
-                  <Brain className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-xl font-bold">PluginCo</span>
-              </div>
-              <p className="text-gray-300">Inteligência Artificial que gera resultado real.</p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Serviços</h4>
-              <ul className="space-y-2 text-gray-300">
-                <li>
-                  <Link href="/servicos" className="hover:text-white">
-                    IA Conversacional
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/servicos" className="hover:text-white">
-                    Automação Inteligente
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/servicos" className="hover:text-white">
-                    Crescimento com IA
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/servicos" className="hover:text-white">
-                    Inteligência Organizacional
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Empresa</h4>
-              <ul className="space-y-2 text-gray-300">
-                <li>
-                  <Link href="/sobre" className="hover:text-white">
-                    Sobre Nós
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/cases" className="hover:text-white">
-                    Cases de Sucesso
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-white">
-                    Blog
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/contato" className="hover:text-white">
-                    Contato
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Contato</h4>
-              <ul className="space-y-2 text-gray-300">
-                <li>contato@pluginco.com.br</li>
-                <li>(11) 9999-9999</li>
-                <li>São Paulo, SP</li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
-            <p>&copy; 2024 PluginCo. Todos os direitos reservados.</p>
-          </div>
-        </div>
-      </footer>
+      
     </div>
   )
 }

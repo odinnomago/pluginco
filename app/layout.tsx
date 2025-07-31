@@ -3,12 +3,14 @@ import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import './globals.css'
 import { WhatsAppButton } from '@/components/whatsapp-button'
+import { WHATSAPP_NUMBER } from '@/lib/constants'
 import { Header } from '@/components/header'
+import { Footer } from '@/components/footer'
 
 export const metadata: Metadata = {
   title: 'v0 App',
   description: 'Created with v0',
-  generator: 'v0.dev',
+  generator: 'v.af',
 }
 
 export default function RootLayout({
@@ -30,7 +32,8 @@ html {
       <body>
         <Header />
         {children}
-        <WhatsAppButton phoneNumber="+5521971872236" />
+        <Footer />
+        <WhatsAppButton phoneNumber={WHATSAPP_NUMBER} />
       </body>
     </html>
   )

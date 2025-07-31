@@ -1,13 +1,14 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Brain, ArrowRight, Calendar, Clock, User, Share2, Linkedin, MessageCircle } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
-import { notFound } from "next/navigation"
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { ArrowRight, Calendar, Clock, User, Share2, Linkedin, MessageCircle } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { CtaMidArticleButton } from "@/components/blog/CtaMidArticleButton";
+import { LeadMagnetBlogButton } from "@/components/blog/LeadMagnetBlogButton";
 
 export async function generateStaticParams() {
-  return [{ slug: "roi-ia-pmes-2024" }]
+  return [{ slug: "roi-ia-pmes-2024" }];
 }
 
 // Mock data - in a real app, this would come from a CMS or database
@@ -18,11 +19,11 @@ const posts = {
     author: {
       name: "Carlos Silva",
       bio: "CEO da PluginCo com mais de 15 anos de experiência em transformação digital e estratégia empresarial.",
-      image: "/placeholder.svg?height=80&width=80",
+      image: "/ceo-profile.svg",
     },
     date: "15 de Janeiro, 2024",
     readTime: "8 min",
-    featuredImage: "/placeholder.svg?height=400&width=800",
+    featuredImage: "/blog-post-content.svg",
     content: `
       <p>A implementação de Inteligência Artificial em pequenas e médias empresas deixou de ser um luxo para se tornar uma necessidade competitiva. Porém, muitos gestores ainda hesitam em investir por não saberem como medir o retorno real desses investimentos.</p>
 
@@ -71,7 +72,7 @@ const posts = {
       <h3>4. Benefícios Intangíveis</h3>
       <p>Considere também:</p>
       <ul>
-        <li>Melhoria na satisfação do cliente</li>
+        <li>Melhoria na moral da equipe e vantagem competitiva têm valor real, mesmo que difícil de quantificar.</li>
         <li>Maior produtividade da equipe</li>
         <li>Vantagem competitiva</li>
         <li>Capacidade de escalar operações</li>
@@ -150,40 +151,40 @@ const posts = {
 
       <p>Com a metodologia correta, é possível calcular com precisão o retorno sobre investimento em projetos de IA. As empresas que implementam essas soluções de forma estratégica estão vendo ROIs de 200% a 500% no primeiro ano.</p>
 
-      <p>O segredo está em começar com projetos menores, medir resultados rigorosamente e escalar gradualmente. A IA não é mais uma questão de "se", mas de "quando" e "como" implementar.</p>
+      <p>O segredo está em começar com projetos menores, medir resultados rigorosamente e escalar gradualmente. A IA não é mais uma questão de &quot;se&quot;, mas de &quot;quando&quot; e &quot;como&quot; implementar.</p>
 
       <blockquote>
-        <p><em>"A melhor hora para implementar IA foi há um ano. A segunda melhor hora é agora."</em></p>
+        <p><em>&quot;A melhor hora para implementar IA foi há um ano. A segunda melhor hora é agora.&quot;</em></p>
       </blockquote>
     `,
     relatedPosts: [
       {
         id: "chatbots-vendas-2024",
         title: "Como Chatbots Estão Revolucionando as Vendas B2B no Brasil",
-        image: "/placeholder.svg?height=200&width=300",
+        image: "/blog-post-thumbnail.svg",
       },
       {
         id: "ia-pequenas-empresas",
         title: "IA para Pequenas Empresas: Por Onde Começar sem Quebrar o Orçamento",
-        image: "/placeholder.svg?height=200&width=300",
+        image: "/blog-post-thumbnail.svg",
       },
       {
         id: "implementacao-crm-ia",
         title: "CRM com IA: Como Potencializar Suas Vendas com Automação Inteligente",
-        image: "/placeholder.svg?height=200&width=300",
+        image: "/blog-post-thumbnail.svg",
       },
     ],
   },
 }
 
 interface PageProps {
-  params: Promise<{
+  params: {
     slug: string
-  }>
+  }
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
-  const { slug } = await params
+  const { slug } = params
   const post = posts[slug as keyof typeof posts]
 
   if (!post) {
@@ -262,12 +263,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                     <p className="text-gray-600 mb-6">
                       Agende um diagnóstico gratuito e descubra o potencial de retorno dos seus investimentos em IA.
                     </p>
-                    <a href="https://wa.me/5521971872236" target="_blank" rel="noopener noreferrer">
-                      <Button size="lg" className="bg-white text-primary hover:bg-gray-100 px-8 py-4 text-lg">
-                        Agende seu Diagnóstico Estratégico
-                        <ArrowRight className="ml-2 w-5 h-5" />
-                      </Button>
-                    </a>
+                    <CtaMidArticleButton />
                   </div>
                 </div>
 
@@ -348,12 +344,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   <p className="text-sm text-gray-600 mb-4">
                     Baixe nossa planilha gratuita para calcular o ROI dos seus projetos de IA de forma automática.
                   </p>
-                  <a href="https://wa.me/5521971872236" target="_blank" rel="noopener noreferrer">
-                    <Button size="sm" className="w-full bg-accent hover:bg-accent/90 text-white">
-                      Baixar Calculadora
-                      <ArrowRight className="ml-2 w-3 h-3" />
-                    </Button>
-                  </a>
+                  <LeadMagnetBlogButton />
                 </Card>
               </div>
             </div>
@@ -393,83 +384,4 @@ export default async function BlogPostPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-primary text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
-                  <Brain className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-xl font-bold">PluginCo</span>
-              </div>
-              <p className="text-gray-300">Inteligência Artificial que gera resultado real.</p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Serviços</h4>
-              <ul className="space-y-2 text-gray-300">
-                <li>
-                  <Link href="/servicos" className="hover:text-white">
-                    IA Conversacional
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/servicos" className="hover:text-white">
-                    Automação Inteligente
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/servicos" className="hover:text-white">
-                    Crescimento com IA
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/servicos" className="hover:text-white">
-                    Inteligência Organizacional
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Empresa</h4>
-              <ul className="space-y-2 text-gray-300">
-                <li>
-                  <Link href="/sobre" className="hover:text-white">
-                    Sobre Nós
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/cases" className="hover:text-white">
-                    Cases de Sucesso
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/blog" className="hover:text-white">
-                    Blog
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/contato" className="hover:text-white">
-                    Contato
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Contato</h4>
-              <ul className="space-y-2 text-gray-300">
-                <li>contato@pluginco.com.br</li>
-                <li>(11) 9999-9999</li>
-                <li>São Paulo, SP</li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
-            <p>&copy; 2024 PluginCo. Todos os direitos reservados.</p>
-          </div>
-        </div>
-      </footer>
-    </div>
-  )
-}
+

@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
@@ -5,6 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { Brain, ArrowRight, Search, Calendar, Clock, User } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { WHATSAPP_NUMBER } from '@/lib/constants'
 
 export default function BlogPage() {
   const featuredPost = {
@@ -16,7 +19,7 @@ export default function BlogPage() {
     author: "Carlos Silva",
     date: "15 de Janeiro, 2024",
     readTime: "8 min",
-    image: "/placeholder.svg?height=400&width=800",
+    image: "/blog-featured-post.svg",
   }
 
   const recentPosts = [
@@ -29,7 +32,7 @@ export default function BlogPage() {
       author: "Ana Costa",
       date: "12 de Janeiro, 2024",
       readTime: "6 min",
-      image: "/placeholder.svg?height=300&width=400",
+      image: "/blog-post-thumbnail.svg",
     },
     {
       id: "automacao-processos-rh",
@@ -95,6 +98,8 @@ export default function BlogPage() {
     "Tendências",
   ]
 
+  const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Olá! Gostaria de falar com um especialista.')}`
+
   return (
     <div className="min-h-screen bg-white">
 
@@ -109,12 +114,14 @@ export default function BlogPage() {
               Artigos, guias e análises sobre inteligência artificial, automação e gestão de negócios, escritos por
               nossos especialistas.
             </p>
-            <a href="https://wa.me/5521971872236" target="_blank" rel="noopener noreferrer">
-              <Button size="lg" className="bg-white text-primary hover:bg-gray-100 px-8 py-4 text-lg">
-                Agende seu Diagnóstico Estratégico
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </a>
+              <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+                <Button
+                  size="lg"
+                  className="bg-white text-primary hover:bg-gray-100 px-8 py-4 text-lg"
+                >
+                  Fale com um especialista
+                </Button>
+              </a>
           </div>
         </div>
       </section>
@@ -235,13 +242,17 @@ export default function BlogPage() {
                 <Card className="p-6 bg-gradient-to-br from-accent/5 to-primary/5">
                   <h3 className="font-semibold text-primary mb-4">Guia Gratuito</h3>
                   <p className="text-sm text-gray-600 mb-4">
-                    Baixe nosso guia "O ROI da IA para PMEs" e descubra como calcular o retorno do investimento em
+                    Baixe nosso guia &quot;O ROI da IA para PMEs&quot; e descubra como calcular o retorno do investimento em
                     automação.
                   </p>
-                  <Button size="sm" className="w-full bg-accent hover:bg-accent/90 text-white">
-                    Baixar Guia
-                    <ArrowRight className="ml-2 w-3 h-3" />
-                  </Button>
+                  <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+                    <Button
+                      size="sm"
+                      className="w-full bg-accent hover:bg-accent/90 text-white"
+                    >
+                      Agende seu Diagnóstico
+                    </Button>
+                  </a>
                 </Card>
               </div>
             </div>
@@ -264,84 +275,7 @@ export default function BlogPage() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-primary text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
-                  <Brain className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-xl font-bold">PluginCo</span>
-              </div>
-              <p className="text-gray-300">Inteligência Artificial que gera resultado real.</p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Serviços</h4>
-              <ul className="space-y-2 text-gray-300">
-                <li>
-                  <Link href="/servicos" className="hover:text-white">
-                    IA Conversacional
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/servicos" className="hover:text-white">
-                    Automação Inteligente
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/servicos" className="hover:text-white">
-                    Crescimento com IA
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/servicos" className="hover:text-white">
-                    Inteligência Organizacional
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Empresa</h4>
-              <ul className="space-y-2 text-gray-300">
-                <li>
-                  <Link href="/sobre" className="hover:text-white">
-                    Sobre Nós
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/cases" className="hover:text-white">
-                    Cases de Sucesso
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/blog" className="hover:text-white">
-                    Blog
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/contato" className="hover:text-white">
-                    Contato
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Contato</h4>
-              <ul className="space-y-2 text-gray-300">
-                <li>contato@pluginco.com.br</li>
-                <li>(11) 9999-9999</li>
-                <li>São Paulo, SP</li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
-            <p>&copy; 2024 PluginCo. Todos os direitos reservados.</p>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }
+

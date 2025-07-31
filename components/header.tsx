@@ -1,9 +1,12 @@
 'use client'
 
+"use client";
+
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Brain } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { WHATSAPP_NUMBER } from '@/lib/constants'
 
 export function Header() {
   const pathname = usePathname()
@@ -34,6 +37,15 @@ export function Header() {
                 : "text-gray-600 hover:text-primary transition-colors"}
             >
               Serviços
+            </Link>
+
+            <Link 
+              href="/precos" 
+              className={pathname === '/precos' 
+                ? "text-primary font-semibold" 
+                : "text-gray-600 hover:text-primary transition-colors"}
+            >
+              Preços
             </Link>
             <Link 
               href="/sobre" 
@@ -68,9 +80,9 @@ export function Header() {
               Contato
             </Link>
           </nav>
-          <a href="https://wa.me/5521971872236" target="_blank" rel="noopener noreferrer">
-              <Button className="bg-accent hover:bg-accent/90 text-white">Agende seu Diagnóstico</Button>
-            </a>
+          <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Olá! Gostaria de agendar um diagnóstico estratégico.')}`} target="_blank" rel="noopener noreferrer">
+            <Button className="bg-accent hover:bg-accent/90 text-white">Agende seu Diagnóstico</Button>
+          </a>
         </div>
       </div>
     </header>
